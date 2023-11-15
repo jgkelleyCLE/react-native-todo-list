@@ -1,20 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
+import TodoForm from './Components/TodoForm';
+import TodoList from './Components/TodoList';
+import { useState } from 'react'
 
 export default function App() {
+
+  const [todos, setTodos] = useState([])
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View className="flex-1 bg-gray-200">
+        <TodoForm todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} />
+        <StatusBar style="auto" />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
